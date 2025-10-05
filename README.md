@@ -8,7 +8,6 @@ This repository contains the front-end JavaScript code for the **E&S Training Po
 
 | File | Description |
 |------|--------------|
-| `app (old).js` | The initial version of the portal script. Used for early-stage testing and form handling. |
 | `app_integrated_final.js` | The latest integrated version that combines form submission, Google Apps Script integration, and a dynamic dashboard with charts. |
 
 ---
@@ -36,7 +35,7 @@ The portal allows users to:
 
 To connect the portal with Google Sheets:
 
-1. Open [Google Apps Script](https://script.google.com/).
+1. Open [Google Apps Script](https://script.google.com/macros/s/AKfycbwXKtB7mMqlOVop4jNpYA9EFra2ffbobC7Atk1i-DW8d9y4YnW-M1Ja-uh-3DgiyILI/exec).
 2. Create a new project and paste this code:
 
    ```javascript

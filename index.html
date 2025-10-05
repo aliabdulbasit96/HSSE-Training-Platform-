@@ -56,40 +56,54 @@
       </div>
     </section>
 
-    <!-- Dashboard -->
-    <section id="section-dashboard" class="hidden grid">
-      <div class="grid grid-3">
-        <div class="card kpi"><div class="label">Total Registrations</div><div id="kpiTotal" class="value">0</div></div>
-        <div class="card kpi"><div class="label">Today's Registrations</div><div id="kpiToday" class="value">0</div></div>
-        <div class="card kpi"><div class="label">Companies Count</div><div id="kpiCompanies" class="value">0</div></div>
+   <!-- Dashboard -->
+<section id="section-dashboard" class="hidden grid">
+  <div class="grid grid-3">
+    <div class="card kpi"><div class="label">Total Registrations</div><div id="kpiTotal" class="value">0</div></div>
+    <div class="card kpi"><div class="label">Today's Registrations</div><div id="kpiToday" class="value">0</div></div>
+    <div class="card kpi"><div class="label">Companies Count</div><div id="kpiCompanies" class="value">0</div></div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card"><canvas id="chartLanguages"></canvas></div>
+    <div class="card"><canvas id="chartTopics"></canvas></div>
+  </div>
+  <div class="card"><canvas id="chartMonthly"></canvas></div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <h3 style="margin:0">Recent Registrations</h3>
+      <div style="display:flex;gap:8px">
+        <a class="btn btn-success"
+           href="https://script.google.com/macros/s/AKfycbzcoQC2H258BrURvJ8-pHK8Pbnb4dMeeBNSXGYSYHIRagNAIgXDCKGDfYvnhksDkHBi/exec"
+           target="_blank">Download Excel</a>
+        <button id="btnExport" class="btn btn-danger" type="button">
+          Export CSV (Google Sheet)
+        </button>
       </div>
+    </div>
+    <div style="overflow:auto;margin-top:10px">
+      <table class="table">
+        <thead>
+          <tr><th>#</th><th>Name</th><th>Company</th><th>Job Title</th><th>Language</th><th>Topic</th></tr>
+        </thead>
+        <tbody id="tableBody"><tr><td colspan="6">No data</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-      <div class="grid grid-2">
-        <div class="card"><canvas id="chartLanguages"></canvas></div>
-        <div class="card"><canvas id="chartTopics"></canvas></div>
-      </div>
-      <div class="card"><canvas id="chartMonthly"></canvas></div>
+<footer>© 2025 Power China – Suez 1.1 GW Wind Farm Project</footer>
 
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <h3 style="margin:0">Recent Registrations</h3>
-          <div style="display:flex;gap:8px">
-            <a class="btn btn-success" href="https://script.google.com/macros/s/AKfycbzcoQC2H258BrURvJ8-pHK8Pbnb4dMeeBNSXGYSYHIRagNAIgXDCKGDfYvnhksDkHBi/exec" target="_blank">Download Excel</a>
-            <button id="btnExport" class="btn btn-danger" type="button">Export Local CSV</button>
-          </div>
-        </div>
-        <div style="overflow:auto;margin-top:10px">
-          <table class="table">
-            <thead><tr><th>#</th><th>Name</th><th>Company</th><th>Job Title</th><th>Language</th><th>Topic</th></tr></thead>
-            <tbody id="tableBody"><tr><td colspan="6">No data</td></tr></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-  </main>
+<!-- Load Chart.js before your app -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="app_integrated_final.js"></script>
 
-  <footer>© 2025 Power China – Suez 1.1 GW Wind Farm Project</footer>
-
-  <script src="app_integrated_final.js"></script>
+<!-- Auto load dashboard when page opens -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    loadDashboard();
+  });
+</script>
 </body>
 </html>

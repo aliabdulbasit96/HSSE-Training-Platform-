@@ -141,92 +141,135 @@ form.addEventListener('submit', async (e)=>{
   form.reset();
 });
 
-/* ==== Dashboard Loader ==== */
-async function loadDashboardData() {
-  try {
-    const response = await fetch(SCRIPT_URL + "?mode=read");
-    if (!response.ok) throw new Error("Network response was not ok");
+/* ==== Dashboard (Reads directly from Google Apps Script) ==== */
+let charts = {};
 
-    const data = await response.json();
-    console.log("Dashboard data loaded:", data);
-    populateDashboard(data);
-  } catch (error) {
-    console.error("Failed to load dashboard data:", error);
-    alert("Error fetching data from Google Sheets!");
+function destroyIfExists(id) {
+  if (charts[id]) {
+    charts[id].destroy();
+    delete charts[id];
   }
 }
 
-/* ==== Charts Setup ==== */
-let charts = {};
-
-function destroyIfExists(id){ 
-  if(charts[id]){ 
-    charts[id].destroy(); 
-    delete charts[id]; 
-  } 
-}
-
-function drawPie(id, items){
+function drawPie(id, items) {
   destroyIfExists(id);
   const ctx = document.getElementById(id).getContext('2d');
-  charts[id] = new Chart(ctx, { 
-    type:'pie', 
-    data:{ 
-      labels: items.map(i=>i.label), 
-      datasets:[{ data: items.map(i=>i.value) }] 
-    }, 
-    options:{ responsive:true } 
+  charts[id] = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: items.map(i => i.label),
+      datasets: [{ data: items.map(i => i.value) }]
+    },
+    options: { responsive: true }
   });
 }
 
-function drawBar(id, items){
+function drawBar(id, items) {
   destroyIfExists(id);
   const ctx = document.getElementById(id).getContext('2d');
-  charts[id] = new Chart(ctx, { 
-    type:'bar', 
-    data:{ 
-      labels: items.map(i=>i.label), 
-      datasets:[{ data: items.map(i=>i.value) }] 
-    }, 
-    options:{ responsive:true, scales:{ y:{ beginAtZero:true } } } 
+  charts[id] = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: items.map(i => i.label),
+      datasets: [{ data: items.map(i => i.value) }]
+    },
+    options: {
+      responsive: true,
+      scales: { y: { beginAtZero: true } }
+    }
   });
 }
 
-function drawLine(id, items){
+function drawLine(id, items) {
   destroyIfExists(id);
   const ctx = document.getElementById(id).getContext('2d');
-  charts[id] = new Chart(ctx, { 
-    type:'line', 
-    data:{ 
-      labels: items.map(i=>i.label), 
-      datasets:[{ data: items.map(i=>i.value), fill:false }] 
-    }, 
-    options:{ responsive:true, scales:{ y:{ beginAtZero:true } } } 
+  charts[id] = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: items.map(i => i.label),
+      datasets: [{ data: items.map(i => i.value), fill: false }]
+    },
+    options: {
+      responsive: true,
+      scales: { y: { beginAtZero: true } }
+    }
   });
 }
 
-/* ==== Populate Dashboard ==== */
-function populateDashboard(data){
+async function loadDashboard() {
   const kpiTotal = document.getElementById('kpiTotal');
   const kpiToday = document.getElementById('kpiToday');
   const kpiCompanies = document.getElementById('kpiCompanies');
   const tbody = document.getElementById('tableBody');
 
-  // KPIs
-  kpiTotal.textContent = data?.totals?.total ?? 0;
-  kpiToday.textContent = data?.totals?.today ?? 0;
-  kpiCompanies.textContent = data?.totals?.companies ?? 0;
+  tbody.innerHTML = '<tr><td colspan="6">Loading...</td></tr>';
 
-  // جدول المشاركين
-  tbody.innerHTML = '';
-  (data?.rows||[]).forEach((r,i)=>{
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${i+1}</td><td>${r.name||''}</td><td>${r.company||''}</td><td>${r.jobTitle||''}</td><td>${r.language||''}</td><td>${r.topic||''}</td>`;
-    tbody.appendChild(tr);
-  });
+  try {
+    const response = await fetch(SCRIPT_URL + '?mode=read');
+    if (!response.ok) throw new Error('Network error');
 
-  // الرسومات البيانية
-  drawPie('chartLanguages', data.languages || []);
-  drawBar('chartTopics', data.topics || []);
-  drawLine('chartMonthly', data.monthly || []);
+    const data = await response.json();
+
+    // --- KPIs ---
+    kpiTotal.textContent = data?.totals?.total ?? 0;
+    kpiToday.textContent = data?.totals?.today ?? 0;
+    kpiCompanies.textContent = data?.totals?.companies ?? 0;
+
+    // --- Table ---
+    tbody.innerHTML = '';
+    (data?.rows || []).forEach((r, i) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${i + 1}</td>
+        <td>${r.name || ''}</td>
+        <td>${r.company || ''}</td>
+        <td>${r.jobTitle || ''}</td>
+        <td>${r.language || ''}</td>
+        <td>${r.topic || ''}</td>`;
+      tbody.appendChild(tr);
+    });
+
+    // --- Charts ---
+    drawPie('chartLanguages', data.languages || []);
+    drawBar('chartTopics', data.topics || []);
+    drawLine('chartMonthly', data.monthly || []);
+
+  } catch (error) {
+    console.error('❌ Failed to load data from Google Apps Script:', error);
+    tbody.innerHTML = '<tr><td colspan="6">Error loading data from Google Sheets.</td></tr>';
+  }
 }
+
+/* ==== Export Data as CSV (Directly from Google Sheet) ==== */
+document.getElementById('btnExport').addEventListener('click', async () => {
+  try {
+    const response = await fetch(SCRIPT_URL + '?mode=read');
+    if (!response.ok) throw new Error('Network error');
+    const data = await response.json();
+
+    if (!data.rows || !data.rows.length) {
+      alert('No data found in Google Sheet.');
+      return;
+    }
+
+    const cols = Object.keys(data.rows[0]);
+    const csv = [
+      cols.join(','),
+      ...data.rows.map(o =>
+        cols.map(c => `"${(o[c] ?? '').replace(/"/g, '""')}"`).join(',')
+      )
+    ].join('\n');
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'registrations_from_google_sheet.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+
+  } catch (error) {
+    console.error('❌ Error exporting CSV:', error);
+    alert('Error downloading data from Google Sheets!');
+  }
+});

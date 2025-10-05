@@ -1,5 +1,5 @@
 /* ==== Config ==== */
-const SCRIPT_URL = "YOUR_NEW_DEPLOYED_WEBAPP_URL";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwXKtB7mMqlOVop4jNpYA9EFra2ffbobC7Atk1i-DW8d9y4YnW-M1Ja-uh-3DgiyILI/exec";
 const DASHBOARD_PASSWORD = "PowerChina2025";
 
 /* ==== Tabs ==== */

@@ -67,6 +67,36 @@ const TRAINING_LINKS = {
     "العربية": "https://1drv.ms/p/c/c073f729a3415e41/Ea-JPoOV88VLgblDKHJU7TYBdy-XMJIzu_JVf-62nJkBQw?e=I5hPP8",
     "中文": "https://1drv.ms/p/c/c073f729a3415e41/EaaGqUZlK65GlZzBGVhLamwBP_r7NNAn2tgy8gOy4x194A?e=rUyIdc"
     },
+  "Heat Stress CamPaign": {
+    "English": "https://1drv.ms/v/c/c073f729a3415e41/EZADf1db6E1InOZGvIq45IoB7_0NLJy6WC57DRboe1pv0Q?e=s6BGAi",
+    "العربية": "https://1drv.ms/v/c/c073f729a3415e41/ER2IPpndnrZPtVXwnVQSxV4Bo_BhsZyYV9RKCOFv2QW93w?e=4WFLOy",
+    "中文": "https://1drv.ms/v/c/c073f729a3415e41/EeWj16QZuBtHkLVZIvHs27sBKlw8qd3EmHQuxjgv_kOF5A?e=efEfMG"
+    },
+  "Working at heights": {
+    "English": "https://1drv.ms/p/c/c073f729a3415e41/ESeR9byPSPhMqJze39xtsWsBzzoej6wfiXqzHK_etURekw?e=vRfW7E",
+    "العربية": "https://1drv.ms/p/c/c073f729a3415e41/ESeR9byPSPhMqJze39xtsWsBzzoej6wfiXqzHK_etURekw?e=vRfW7E",
+    "中文": "https://1drv.ms/p/c/c073f729a3415e41/ESeR9byPSPhMqJze39xtsWsBzzoej6wfiXqzHK_etURekw?e=vRfW7E"
+    },
+   "Hot works": {
+    "English": "https://1drv.ms/p/c/c073f729a3415e41/EdoW063LtuFPiSaeXT-RStwBTQoldusfQYwe9DPca4U5eQ?e=krEqsR",
+    "العربية": "https://1drv.ms/p/c/c073f729a3415e41/EdoW063LtuFPiSaeXT-RStwBTQoldusfQYwe9DPca4U5eQ?e=krEqsR",
+    "中文": "https://1drv.ms/p/c/c073f729a3415e41/EdoW063LtuFPiSaeXT-RStwBTQoldusfQYwe9DPca4U5eQ?e=krEqsR"
+    },
+   "Excavation safety": {
+    "English": "https://1drv.ms/p/c/c073f729a3415e41/Ee4Bz45-jpdKuEWPuUXGnI8BbtwcQj-xjz2jQHCerkjMdA?e=vQpRSZ",
+    "العربية": "https://1drv.ms/p/c/c073f729a3415e41/Ee4Bz45-jpdKuEWPuUXGnI8BbtwcQj-xjz2jQHCerkjMdA?e=vQpRSZ",
+    "中文": "https://1drv.ms/p/c/c073f729a3415e41/Ee4Bz45-jpdKuEWPuUXGnI8BbtwcQj-xjz2jQHCerkjMdA?e=vQpRSZ"
+    },
+  "Defensive Driving": {
+    "English": "https://1drv.ms/p/c/c073f729a3415e41/Ecf0KuMcIgZKl_BZOlO7NGABvWr5-xVJDIWP1W4V_SeyWw?e=d7x8OQ",
+    "العربية": "https://1drv.ms/p/c/c073f729a3415e41/Ecf0KuMcIgZKl_BZOlO7NGABvWr5-xVJDIWP1W4V_SeyWw?e=d7x8OQ",
+    "中文": "https://1drv.ms/p/c/c073f729a3415e41/Ecf0KuMcIgZKl_BZOlO7NGABvWr5-xVJDIWP1W4V_SeyWw?e=d7x8OQ"
+    },
+  "Flagman": {
+    "English": "https://1drv.ms/p/c/c073f729a3415e41/ERkcQd_4ledNuUMgxtVeHA0B1WUQ4PPcx9trn9wrmK2Y3A?e=Fogego",
+    "العربية": "https://1drv.ms/p/c/c073f729a3415e41/ERkcQd_4ledNuUMgxtVeHA0B1WUQ4PPcx9trn9wrmK2Y3A?e=Fogego",
+    "中文": "https://1drv.ms/p/c/c073f729a3415e41/ERkcQd_4ledNuUMgxtVeHA0B1WUQ4PPcx9trn9wrmK2Y3A?e=Fogego"
+    },
 };
 
 /* ==== Tabs ==== */

@@ -2,6 +2,11 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcoQC2H258BrURvJ8-pHK8Pbnb4dMeeBNSXGYSYHIRagNAIgXDCKGDfYvnhksDkHBi/exec";
 const DASHBOARD_PASSWORD = "PowerChina2025";
 const TRAINING_LINKS = {
+  "HSSE Induction": {
+    "English": "https://1drv.ms/p/c/c073f729a3415e41/IQDHD_5ri9GWQ4I7DHG4Ag08AUxdmwmD8PdNnDsfdm964Zk?e=SaKeD9",
+    "العربية": "https://1drv.ms/p/c/c073f729a3415e41/IQDHD_5ri9GWQ4I7DHG4Ag08AUxdmwmD8PdNnDsfdm964Zk?e=SaKeD9",
+    "中文": "https://1drv.ms/p/c/c073f729a3415e41/IQDHD_5ri9GWQ4I7DHG4Ag08AUxdmwmD8PdNnDsfdm964Zk?e=SaKeD9"
+  },
   "Environmental Manual": {
     "English": "https://1drv.ms/p/c/c073f729a3415e41/EUpvUnWPN9BBseBz71LmG10BZ4Iac61_TNohL5E60hW9cw?e=INlKgQ",
     "العربية": "https://1drv.ms/p/c/c073f729a3415e41/EXJjcDWO_TJHvcFS-Q83y-QBrhn1kiMyaqYtjrtj27kbTQ?e=2PLtfc",

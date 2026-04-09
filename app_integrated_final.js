@@ -102,6 +102,11 @@ const TRAINING_LINKS = {
     "العربية": "https://1drv.ms/p/c/c073f729a3415e41/ERkcQd_4ledNuUMgxtVeHA0B1WUQ4PPcx9trn9wrmK2Y3A?e=Fogego",
     "中文": "https://1drv.ms/p/c/c073f729a3415e41/ERkcQd_4ledNuUMgxtVeHA0B1WUQ4PPcx9trn9wrmK2Y3A?e=Fogego"
     },
+  "Supervisor Safety Training": {
+    "English": "https://1drv.ms/p/c/c073f729a3415e41/IQDojYzNES1tTqwRW7GdOECUAVkcSii-YZXqYGY46RKkNi0?e=kaMVBC",
+    "العربية": "https://1drv.ms/p/c/c073f729a3415e41/IQDojYzNES1tTqwRW7GdOECUAVkcSii-YZXqYGY46RKkNi0?e=kaMVBC",
+    "中文": "https://1drv.ms/p/c/c073f729a3415e41/IQDojYzNES1tTqwRW7GdOECUAVkcSii-YZXqYGY46RKkNi0?e=kaMVBC"
+    },
 };
 
 /* ==== Tabs ==== */
